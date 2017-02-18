@@ -1,0 +1,8 @@
+<input
+  type="text"
+  placeholder="enter your name here"
+  #name
+  required
+  (keyup.enter)="createTodo(name)"
+/>
+<input type="submit" value="save" (click)="createTodo(name)" />
