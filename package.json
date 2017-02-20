@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tix6/todo_school.git"
+    "url": ""
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Tix6/todo_school/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/Tix6/todo_school#readme",
+  "homepage": "",
   "dependencies": {
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",

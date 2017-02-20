@@ -16,10 +16,10 @@ app
 app
   .get('/api/todos', todo.get)
   .post('/api/todos', todo.add)
-  .delete('/api/todos', todo.remove)
+  .delete('/api/todos/:id', todo.remove)
 
   .get('/api/tasks', task.get)
   .post('/api/tasks', task.add)
-  .delete('/api/tasks', task.remove);
+  .delete('/api/tasks/:id', task.remove);
 
 server.listen(8080, () => console.log('server started on port 8080'));

@@ -16,7 +16,7 @@ const get = (req, res) => {
 };
 
 const remove = (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
 
   if (!id) return res.status(400).send('id is required');
   const toRemove = todos.find(todo => +todo.id === +id);
