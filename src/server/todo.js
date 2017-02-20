@@ -1,33 +1,33 @@
-let todos = [];
-let Gid = 0;
 
-const add = (req, res) => {
-  const { name } = req.body;
+class Todos {
 
-  if (!name) return res.status(400).send('name is required');
+  todos = [];
+  Gid = 0;
 
-  const newTodo = { name, id: Gid += 1 };
-  todos = [newTodo, ...todos];
-  return res.send(newTodo);
-};
+  add = (req, res) => {
+    const { name } = req.body;
 
-const get = (req, res) => {
-  res.send(todos);
-};
+    if (!name) return res.status(400).send('name is required');
 
-const remove = (req, res) => {
-  const { id } = req.params;
+    const newTodo = { name, id: this.Gid += 1 };
+    this.todos = [newTodo, ...this.todos];
+    return res.send(newTodo);
+  }
 
-  if (!id) return res.status(400).send('id is required');
-  const toRemove = todos.find(todo => +todo.id === +id);
+  get = (req, res) => {
+    res.send(this.todos);
+  }
 
-  if (!toRemove) return res.status(500).send('todos[id] does not exists');
-  todos = todos.filter(todo => +todo.id !== +id);
-  return res.send({ id });
-};
+  remove = (req, res) => {
+    const { id } = req.params;
 
-export default {
-  get,
-  add,
-  remove,
-};
+    if (!id) return res.status(400).send('id is required');
+    const toRemove = this.todos.find(todo => +todo.id === +id);
+
+    if (!toRemove) return res.status(500).send('todos[id] does not exists');
+    this.todos = this.todos.filter(todo => +todo.id !== +id);
+    return res.send({ id });
+  }
+}
+
+export default new Todos();
