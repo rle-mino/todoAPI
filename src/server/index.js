@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import http from 'http';
+import morgan from 'morgan';
 import todo from './todo';
 import task from './task';
 
@@ -10,6 +11,7 @@ const server = http.createServer(app);
 
 app
   .use(cors())
+  .use(morgan('dev'))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: false }));
 

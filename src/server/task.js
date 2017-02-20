@@ -11,8 +11,8 @@ class Tasks {
   add = (req, res) => {
     const { todoId, text } = req.body;
 
-    if (!todoId) return res.status(400).send('todoId is required');
-    if (!text) return res.status(400).send('text is required');
+    if (!todoId) return res.status(400).send({ details: 'todoId is required' });
+    if (!text) return res.status(400).send({ details: 'text is required' });
 
     const newTask = { todoId, text, id: this.Gid += 1 };
     this.tasks = [newTask, ...this.tasks];
@@ -22,10 +22,10 @@ class Tasks {
   remove = (req, res) => {
     const { id } = req.params;
 
-    if (!id) return res.status(400).send('id is required');
+    if (!id) return res.status(400).send({ details: 'id is required' });
 
     const toRemove = this.tasks.find(task => +task.id === +id);
-    if (!toRemove) return res.send('tasks[id] does not exists');
+    if (!toRemove) return res.status(500).send({ details: 'tasks[id] does not exists' });
     this.tasks = this.tasks.filter(task => +task.id !== +id);
     return res.send({ id });
   }
